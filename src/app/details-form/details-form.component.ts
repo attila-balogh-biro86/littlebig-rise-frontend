@@ -45,7 +45,7 @@ export class DetailsFormComponent implements OnInit {
         },
         duration: 3000,
       });
-    }
+    };
   }
 
 
