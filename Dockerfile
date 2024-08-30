@@ -1,13 +1,21 @@
-FROM node:alpine
+FROM node:lts-alpine3.20 AS build
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
-COPY . /usr/src/app
-
-ENV NODE_OPTIONS="--openssl-legacy-provider"
-
-RUN npm install -g @angular/cli
+COPY package*.json ./
 
 RUN npm install
 
-CMD ["ng", "serve", "--host", "0.0.0.0"]
+RUN npm install -g @angular/cli
+
+COPY . .
+
+ENV NODE_OPTIONS="--openssl-legacy-provider"
+
+RUN ng build --configuration=production
+
+FROM nginx:stable-alpine3.20
+
+COPY --from=build app/dist/angular-forms /usr/share/nginx/html
+
+EXPOSE 80
