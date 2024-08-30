@@ -12,7 +12,7 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
-  postProposal(person: Proposal): Observable<Proposal> {
-    return this.http.post<Proposal>('https://putsreq.com/2BTGmqA20FpNczDAGeqR', person);
+  postProposal(proposal: Proposal): Observable<Proposal> {
+    return this.http.post<Proposal>('https://littlebig-core-backend.bluerock-2a891aee.northeurope.azurecontainerapps.io/api/v1/rise/request-for-proposals', proposal);
   }
 }

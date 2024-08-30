@@ -15,7 +15,7 @@
 
   <mat-form-field class="details-form__form-field" hintLabel="min 3, Max 25 characters." >
     <mat-label class="details-form__form-field__label">Proposal name</mat-label>
-    <input class="details-form__form-field__input" matInput placeholder="please enter proposal name" [(ngModel)]="proposal.proposalName" name="proposalName" minlength="3" maxlength="25" required
+    <input class="details-form__form-field__input" matInput placeholder="please enter proposal name" [(ngModel)]="proposal.name" name="proposalName" minlength="3" maxlength="25" required
            #proposalName='ngModel'>
     <mat-error *ngIf="proposalName.hasError">
       Proposal name not valid
@@ -40,7 +40,7 @@
   </div>
   <mat-form-field class="details-form__form-field">
     <mat-label class="details-form__form-field__label">Applicant ID</mat-label>
-    <textarea class="details-form__form-field__input" matInput placeholder="please enter applicant id" value="" [(ngModel)]="proposal.applicantId" name="applicantId"></textarea>
+    <textarea class="details-form__form-field__input" matInput placeholder="please enter applicant id" value="" [(ngModel)]="proposal.preferredSupplierClientId" name="applicantId"></textarea>
   </mat-form-field>
   <button class="details-form__submit" mat-flat-button color="accent" (click)="onDetailsFormSubmit()">Save proposal</button>
 </form>

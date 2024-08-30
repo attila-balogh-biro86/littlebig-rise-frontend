@@ -25,13 +25,13 @@ export class DetailsFormComponent implements OnInit {
   .postProposal(this.proposal)
   .subscribe(proposal => {
     console.log('postProposal has been successful:', proposal);
-    const message = proposal.description + ' has been saved successfully';
+    const message = 'Proposal has been saved successfully';
     this.snackBar.openFromComponent(NotificationComponent, {
         data: {
           message,
           success: true
         },
-        duration: 3000,
+        duration: 5000,
       });
     });
     // tslint:disable-next-line:no-unused-expression

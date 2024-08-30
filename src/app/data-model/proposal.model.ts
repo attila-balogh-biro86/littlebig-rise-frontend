@@ -1,7 +1,7 @@
 export class Proposal {
-   proposalName: string;
+   name: string;
    description: string;
    workUnitType: string;
    maximumPrice: number;
-   applicantId: string;
+  preferredSupplierClientId: string;
 }
