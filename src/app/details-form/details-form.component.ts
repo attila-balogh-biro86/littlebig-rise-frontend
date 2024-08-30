@@ -1,6 +1,6 @@
-import { DataService } from './../services/data.service';
+import { DataService } from '../services/data.service';
 import { Component, OnInit } from '@angular/core';
-import { Person } from '../data-model/person.model';
+import { Proposal } from '../data-model/proposal.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NotificationComponent } from '../components/notification/notification.component';
 
@@ -11,37 +11,36 @@ import { NotificationComponent } from '../components/notification/notification.c
 })
 export class DetailsFormComponent implements OnInit {
 
-  constructor( private readonly dataService:DataService, private _snackBar: MatSnackBar) { }
+  constructor( private readonly dataService: DataService, private snackBar: MatSnackBar) { }
 
-  person: Person = new Person();
-  ages: number[] = [];
+  proposal: Proposal = new Proposal();
+  workUnitTypes: string[] = [];
 
   ngOnInit() {
-    // populating age array with 1 to 100
-    this.ages = Array(100).fill(1).map((e,i)=>i+1);
+    this.workUnitTypes = Array.of('HOURS', 'DAYS', 'MONTHS', 'PACKAGE');
   }
 
-  onDetailsFormSubmit(){
-
+  onDetailsFormSubmit() {
     this.dataService
-  .postUserDetails(this.person)
-  .subscribe(person => {
-    console.log('postUserDetails has been successful:', person)
-      let message = person.firstName + ' ' + person.lastName + ' details has been saved successfully';
-      this._snackBar.openFromComponent(NotificationComponent, {
+  .postProposal(this.proposal)
+  .subscribe(proposal => {
+    console.log('postProposal has been successful:', proposal);
+    const message = proposal.description + ' has been saved successfully';
+    this.snackBar.openFromComponent(NotificationComponent, {
         data: {
-          message: message,
+          message,
           success: true
         },
         duration: 3000,
       });
     });
+    // tslint:disable-next-line:no-unused-expression
     error => {
-      console.log ('postUserDetails post failed: ', error)
-      let message = 'Save details has failed';
-      this._snackBar.openFromComponent(NotificationComponent, {
+      console.log ('postProposal post failed: ', error);
+      const message = 'Save proposal has failed';
+      this.snackBar.openFromComponent(NotificationComponent, {
         data: {
-          message: message,
+          message,
           success: false
         },
         duration: 3000,

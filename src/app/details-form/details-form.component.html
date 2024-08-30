@@ -2,50 +2,47 @@
   <div class="row">
 <form class="details-form" #detailsForm="ngForm">
   <div class="details-form__top">
-    Details form
+    Proposal submit form
   </div>
   <mat-form-field class="details-form__form-field" hintLabel="min 3, Max 25 characters." >
-    <mat-label class="details-form__form-field__label">First name</mat-label>
-    <input class="details-form__form-field__input" matInput placeholder="please enter first name" [(ngModel)]="person.firstName" name="firstName" minlength="3" maxlength="25" required
-    #firstName='ngModel' >
-    <mat-error *ngIf="firstName.hasError">
-     First name is not valid
+    <mat-label class="details-form__form-field__label">Description</mat-label>
+    <input class="details-form__form-field__input" matInput placeholder="please enter description" [(ngModel)]="proposal.description" name="description" minlength="3" maxlength="25" required
+           #description='ngModel' >
+    <mat-error *ngIf="description.hasError">
+     Description is not valid
     </mat-error>
   </mat-form-field>
 
   <mat-form-field class="details-form__form-field" hintLabel="min 3, Max 25 characters." >
-    <mat-label class="details-form__form-field__label">Last name</mat-label>
-    <input class="details-form__form-field__input" matInput placeholder="please enter last name" [(ngModel)]="person.lastName" name="lastName" minlength="3" maxlength="25" required
-    #lastName='ngModel'>
-    <mat-error *ngIf="firstName.hasError">
-      Last name is not valid
+    <mat-label class="details-form__form-field__label">Proposal name</mat-label>
+    <input class="details-form__form-field__input" matInput placeholder="please enter proposal name" [(ngModel)]="proposal.proposalName" name="proposalName" minlength="3" maxlength="25" required
+           #proposalName='ngModel'>
+    <mat-error *ngIf="proposalName.hasError">
+      Proposal name not valid
      </mat-error>
   </mat-form-field>
-  <mat-form-field class="details-form__form-field">
-    <mat-label>Age</mat-label>
-    <mat-select name="age" [(ngModel)]="person.age">
-      <mat-option *ngFor="let age of ages" [value]="age" >
-        {{age}}
-      </mat-option>
-    </mat-select>
+  <mat-form-field class="details-form__form-field" hintLabel="min 3, Max 25 characters." >
+    <mat-label class="details-form__form-field__label">Maximum price</mat-label>
+    <input class="details-form__form-field__input" matInput placeholder="please enter proposal name" [(ngModel)]="proposal.maximumPrice" name="maximumPrice" minlength="3" maxlength="25" required
+           #maximumPrice='ngModel'>
+    <mat-error *ngIf="maximumPrice.hasError">
+      Price is not valid
+    </mat-error>
   </mat-form-field>
   <div class="details-form__form-field">
-    <label class="details-form__form-field__label details-form__form-field--block">Pick your gender</label>
-    <mat-radio-group  aria-label="Select gender"  name="genders" class="details-form__form-field__gender" [(ngModel)]="person.gender">
-      <mat-radio-button value="Male">Male</mat-radio-button>
-      <mat-radio-button value="Female">Female</mat-radio-button>
-      <mat-radio-button value="Neutral">Neutral</mat-radio-button>
-      <mat-radio-button value="NotProvided">Prefer not to say</mat-radio-button>
+    <label class="details-form__form-field__label details-form__form-field--block">Choose working unit type</label>
+    <mat-radio-group  aria-label="Select work type unit"  name="genders" class="details-form__form-field__gender" [(ngModel)]="proposal.workUnitType">
+      <mat-radio-button value="HOURS">HOURS</mat-radio-button>
+      <mat-radio-button value="DAYS">DAYS</mat-radio-button>
+      <mat-radio-button value="MONTHS">MONTHS</mat-radio-button>
+      <mat-radio-button value="PACKAGE">PACKAGE</mat-radio-button>
     </mat-radio-group>
   </div>
   <mat-form-field class="details-form__form-field">
-    <mat-label class="details-form__form-field__label">Address</mat-label>
-    <textarea  class="details-form__form-field__input" matInput placeholder="please enter address" value="" [(ngModel)]="person.Address" name="address"></textarea>
+    <mat-label class="details-form__form-field__label">Applicant ID</mat-label>
+    <textarea class="details-form__form-field__input" matInput placeholder="please enter applicant id" value="" [(ngModel)]="proposal.applicantId" name="applicantId"></textarea>
   </mat-form-field>
-  <div class="details-form__form-field">
-    <mat-checkbox ngModel name="consented" [(ngModel)]="person.consented" required   #consentedCheck='ngModel'>I consent to disclose my personal information</mat-checkbox>
-  </div>
-  <button class="details-form__submit" mat-flat-button color="accent" (click)="onDetailsFormSubmit()">Save details</button>
+  <button class="details-form__submit" mat-flat-button color="accent" (click)="onDetailsFormSubmit()">Save proposal</button>
 </form>
 </div>
 </div>
